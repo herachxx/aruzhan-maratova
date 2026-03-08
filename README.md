@@ -137,6 +137,7 @@ git push -u origin main
 - **Instagram:** [@herachxx](https://www.instagram.com/herachxx/)
 - **YouTube:** [@herachxx](https://www.youtube.com/@herachxx)
 
+Be free to ask any questions! ❤️
 ---
 
 ## License
@@ -150,5 +151,3 @@ The **media** (photos, videos, certificates) are personal and remain all rights 
 <p align="center">
   Built by Aruzhan Maratova · Aktobe, Kazakhstan · 2026
 </p>
-
-Be free to ask any questions! ❤️
