@@ -3,27 +3,31 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <meta name="description" content="Aruzhan Maratova — Cybersecurity researcher, CTF player, NSRI Program Director. 16-year-old builder from Aktobe, Kazakhstan targeting MIT."/>
+  <meta name="description" content="Aruzhan Maratova — Cybersecurity researcher, CTF player, NSRI Program Director. 16-year-old from Aktobe, Kazakhstan targeting MIT."/>
   <meta name="keywords" content="Aruzhan Maratova, cybersecurity, CTF, NSRI, Kazakhstan, MIT, competitive programming, robotics, herachxx"/>
   <meta name="author" content="Aruzhan Maratova"/>
   <meta name="robots" content="index, follow"/>
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="Aruzhan Maratova · Cybersecurity Researcher"/>
   <meta property="og:description" content="16-year-old cybersecurity researcher, CTF player, NSRI Director from Kazakhstan targeting MIT."/>
-  <meta property="og:image" content="assets/aruzhan.jpeg"/>
+  <meta property="og:image" content="assets/website-icon.png"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Aruzhan Maratova · Cybersecurity Researcher"/>
   <meta name="twitter:description" content="16-year-old cybersecurity researcher, CTF player, NSRI Director from Kazakhstan."/>
-  <meta name="twitter:image" content="assets/aruzhan.jpeg"/>
-  <title>Aruzhan Maratova · Cybersecurity researcher</title>
+  <meta name="twitter:image" content="assets/website-icon.png"/>
+  <title>Aruzhan Maratova · Cybersecurity Researcher</title>
+
+  <!-- favicon — website-icon.jpg converted -->
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
-  <link rel="icon" type="image/png" href="assets/favicon.png" sizes="64x64"/>
+  <link rel="icon" type="image/png" href="assets/favicon.png" sizes="256x256"/>
   <link rel="apple-touch-icon" href="assets/favicon.png"/>
+
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
   <link rel="stylesheet" href="styles.css"/>
+
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Aruzhan Maratova","jobTitle":"Cybersecurity Researcher & NSRI Program Director","description":"16-year-old cybersecurity researcher, CTF player, and NSRI Director from Aktobe, Kazakhstan.","sameAs":["https://github.com/herachxx","https://www.linkedin.com/in/aruzhan-maratova-or-herachxx/","https://www.instagram.com/herachxx/","https://www.youtube.com/@herachxx"],"address":{"@type":"PostalAddress","addressLocality":"Aktobe","addressCountry":"KZ"}}</script>
 </head>
 <body>
@@ -31,10 +35,12 @@
 <a href="#main" class="skip-link">Skip to main content</a>
 <div id="prog" role="progressbar" aria-label="Page scroll progress"></div>
 
+<!-- hamburger — only toggle; becomes X when open -->
 <button id="nav-btn" class="nav-btn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidenav">
   <span></span><span></span><span></span>
 </button>
 
+<!-- SIDENAV -->
 <nav id="sidenav" class="sidenav" aria-label="Main navigation">
   <div class="sn-header">
     <a href="#home" class="sn-brand" aria-label="Go to top">
@@ -45,7 +51,6 @@
       </div>
     </a>
   </div>
-
   <ul class="sn-nav" role="list">
     <li><a href="#about"><i class="fa-regular fa-user" aria-hidden="true"></i><span>About</span></a></li>
     <li><a href="#skills"><i class="fa-solid fa-code" aria-hidden="true"></i><span>Skills</span></a></li>
@@ -58,12 +63,8 @@
     <li><a href="#goals"><i class="fa-solid fa-bullseye" aria-hidden="true"></i><span>Goals</span></a></li>
     <li><a href="#contact"><i class="fa-regular fa-envelope" aria-hidden="true"></i><span>Contact</span></a></li>
   </ul>
-
   <div class="sn-foot">
-    <div class="sn-status">
-      <span class="sn-dot" aria-hidden="true"></span>
-      <span>Open to opportunities</span>
-    </div>
+    <div class="sn-status"><span class="sn-dot" aria-hidden="true"></span><span>Open to opportunities</span></div>
     <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Aktobe, KZ · UTC+5</span>
     <span>AIS · Class of 2027</span>
   </div>
@@ -71,6 +72,7 @@
 
 <div id="nav-overlay" class="nav-overlay" aria-hidden="true"></div>
 
+<!-- MAIN WRAP — pushed right when nav open on desktop -->
 <div id="wrap" class="wrap">
 
   <!-- HERO -->
@@ -87,9 +89,8 @@
       </div>
       <p class="overline"><span class="overline-bar" aria-hidden="true"></span>Director at NSRI &nbsp;·&nbsp; Aktobe, Kazakhstan</p>
       <h1>Maratova<br><em>Aruzhan</em></h1>
-      <p class="hero-role">Cybersecurity researcher &amp; CTF player</p>
+      <p class="hero-role">Cybersecurity Researcher &amp; CTF Player</p>
       <p class="hero-bio">16-year-old researcher from Kazakhstan building a career in cybersecurity — CTF competitions, Linux systems, competitive programming, and leading a global research chapter. Targeting MIT.</p>
-
       <div class="tag-cloud">
         <span class="tag tag-accent"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i>Cybersecurity</span>
         <span class="tag"><i class="fa-solid fa-flag" aria-hidden="true"></i>CTF</span>
@@ -98,7 +99,6 @@
         <span class="tag"><i class="fa-solid fa-flask" aria-hidden="true"></i>Research</span>
         <span class="tag"><i class="fa-solid fa-microchip" aria-hidden="true"></i>Robotics</span>
       </div>
-
       <div class="hero-btns">
         <a href="#projects" class="btn btn-fill"><i class="fa-solid fa-terminal" aria-hidden="true"></i>View Projects</a>
         <a href="#contact" class="btn btn-ring"><i class="fa-regular fa-envelope" aria-hidden="true"></i>Contact me</a>
@@ -109,29 +109,21 @@
       <div class="portrait-wrap" id="portrait">
         <div class="portrait-ring" aria-hidden="true"></div>
         <div class="portrait-ring portrait-ring-2" aria-hidden="true"></div>
-        <img src="assets/aruzhan.jpeg" alt="Aruzhan Maratova — Cybersecurity Researcher from Kazakhstan" width="290" height="390"/>
-        <div class="portrait-badge" aria-label="Identity badge">
-          <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+        <!-- aruzhan.jpeg must be placed in assets/ folder -->
+        <img src="assets/aruzhan.jpeg" alt="Aruzhan Maratova — Cybersecurity Researcher"/>
+        <div class="portrait-badge" aria-hidden="true">
+          <i class="fa-solid fa-shield-halved"></i>
           Maratova Aruzhan<br>Aqbobek Lyceum
         </div>
       </div>
-      <div class="float-card float-card-1" aria-hidden="true">
-        <i class="fa-solid fa-trophy"></i>
-        <span>30+ Awards</span>
-      </div>
-      <div class="float-card float-card-2" aria-hidden="true">
-        <i class="fa-solid fa-flag"></i>
-        <span>CTF Player</span>
-      </div>
+      <div class="float-card float-card-1" aria-hidden="true"><i class="fa-solid fa-trophy"></i><span>30+ Awards</span></div>
+      <div class="float-card float-card-2" aria-hidden="true"><i class="fa-solid fa-flag"></i><span>CTF Player</span></div>
     </div>
 
-    <a href="#about" class="scroll-cue" aria-label="Scroll down">
-      <span>Scroll</span>
-      <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
-    </a>
+    <a href="#about" class="scroll-cue" aria-label="Scroll down"><span>Scroll</span><i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
   </section>
 
-  <!-- STATS -->
+  <!-- STATS BAR -->
   <div class="statsbar" role="region" aria-label="Key statistics">
     <div class="stat"><strong class="stat-n">16</strong><span>Years Old</span></div>
     <div class="stat-div" aria-hidden="true"></div>
@@ -165,11 +157,11 @@
       </div>
       <div class="media-stack">
         <figure class="mcard reveal">
-          <img src="assets/media/my-setup-for-cybersecurity.jpg" alt="Cybersecurity workspace" loading="lazy" width="600" height="400"/>
+          <img src="assets/media/my-setup-for-cybersecurity.jpg" alt="Cybersecurity workspace" loading="lazy"/>
           <figcaption><i class="fa-solid fa-shield-halved" aria-hidden="true"></i>My cybersecurity workspace</figcaption>
         </figure>
         <figure class="mcard reveal">
-          <img src="assets/media/silly-picture-of-me-looking-like-a-real-programmer.jpg" alt="Aruzhan coding" loading="lazy" width="600" height="400"/>
+          <img src="assets/media/silly-picture-of-me-looking-like-a-real-programmer.jpg" alt="Aruzhan coding" loading="lazy"/>
           <figcaption><i class="fa-solid fa-code" aria-hidden="true"></i>Looking like a real hacker</figcaption>
         </figure>
       </div>
@@ -186,54 +178,34 @@
     <div class="skills-grid mt-xl">
       <div class="skill-cards">
         <article class="skill-card reveal">
-          <div class="sc-top">
-            <div class="sc-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
-            <h3>Cybersecurity</h3>
-            <span class="sc-num" aria-hidden="true">01</span>
-          </div>
+          <div class="sc-top"><div class="sc-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div><h3>Cybersecurity</h3><span class="sc-num" aria-hidden="true">01</span></div>
           <p>Network security, vulnerability analysis, offensive and defensive techniques — cryptography, web exploitation, reverse engineering.</p>
           <div class="chips"><span>Network Security</span><span>Cryptography</span><span>Reverse Engineering</span><span>Web Exploitation</span></div>
         </article>
         <article class="skill-card reveal">
-          <div class="sc-top">
-            <div class="sc-icon"><i class="fa-brands fa-linux" aria-hidden="true"></i></div>
-            <h3>Linux &amp; Systems</h3>
-            <span class="sc-num" aria-hidden="true">02</span>
-          </div>
+          <div class="sc-top"><div class="sc-icon"><i class="fa-brands fa-linux" aria-hidden="true"></i></div><h3>Linux &amp; Systems</h3><span class="sc-num" aria-hidden="true">02</span></div>
           <p>Deep command-line fluency, shell scripting, system administration, WSL setup, and embedded Linux on Raspberry Pi 4B.</p>
           <div class="chips"><span>Bash / Shell</span><span>Raspberry Pi 4B</span><span>WSL</span><span>System Admin</span></div>
         </article>
         <article class="skill-card reveal">
-          <div class="sc-top">
-            <div class="sc-icon"><i class="fa-solid fa-code" aria-hidden="true"></i></div>
-            <h3>Competitive Programming</h3>
-            <span class="sc-num" aria-hidden="true">03</span>
-          </div>
+          <div class="sc-top"><div class="sc-icon"><i class="fa-solid fa-code" aria-hidden="true"></i></div><h3>Competitive Programming</h3><span class="sc-num" aria-hidden="true">03</span></div>
           <p>Olympiad-level problem-solving in C++, Python, Kotlin. 31st of 1000+ at iCode (AITU). City &amp; regional olympiad medals.</p>
           <div class="chips"><span>C++</span><span>Python</span><span>Kotlin</span><span>Algorithms</span></div>
         </article>
         <article class="skill-card reveal">
-          <div class="sc-top">
-            <div class="sc-icon"><i class="fa-solid fa-flag" aria-hidden="true"></i></div>
-            <h3>CTF Competitions</h3>
-            <span class="sc-num" aria-hidden="true">04</span>
-          </div>
+          <div class="sc-top"><div class="sc-icon"><i class="fa-solid fa-flag" aria-hidden="true"></i></div><h3>CTF Competitions</h3><span class="sc-num" aria-hidden="true">04</span></div>
           <p>Binary exploitation, web challenges, steganography, OSINT — building a real-world offensive security mindset through competition.</p>
           <div class="chips"><span>Binary Exploitation</span><span>Web CTF</span><span>Steganography</span><span>OSINT</span></div>
         </article>
         <article class="skill-card reveal">
-          <div class="sc-top">
-            <div class="sc-icon"><i class="fa-solid fa-users" aria-hidden="true"></i></div>
-            <h3>Leadership &amp; Research</h3>
-            <span class="sc-num" aria-hidden="true">05</span>
-          </div>
+          <div class="sc-top"><div class="sc-icon"><i class="fa-solid fa-users" aria-hidden="true"></i></div><h3>Leadership &amp; Research</h3><span class="sc-num" aria-hidden="true">05</span></div>
           <p>Director at NSRI — managing a global research chapter, recruiting students, coordinating PhD mentors across 93+ countries.</p>
           <div class="chips"><span>Chapter management</span><span>Research methods</span><span>Mentorship</span></div>
         </article>
       </div>
       <div class="skills-side">
         <figure class="mcard reveal">
-          <img src="assets/media/setting-up-Windows-Subsystem-for-Linux-on-my-laptop.jpg" alt="Setting up WSL on laptop" loading="lazy" width="320" height="240"/>
+          <img src="assets/media/setting-up-Windows-Subsystem-for-Linux-on-my-laptop.jpg" alt="Setting up WSL" loading="lazy"/>
           <figcaption><i class="fa-brands fa-linux" aria-hidden="true"></i>Setting up WSL on my laptop</figcaption>
         </figure>
         <div class="pill-cloud reveal">
@@ -245,23 +217,17 @@
           <p class="prof-title">Language Proficiency</p>
           <div class="prof-item">
             <span class="prof-lang">Kazakh</span>
-            <div class="prof-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Kazakh: Native">
-              <div class="prof-fill" style="--w:100%"></div>
-            </div>
+            <div class="prof-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Kazakh: Native"><div class="prof-fill" style="--w:100%"></div></div>
             <span class="prof-level">Native</span>
           </div>
           <div class="prof-item">
             <span class="prof-lang">Russian</span>
-            <div class="prof-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Russian: Fluent">
-              <div class="prof-fill" style="--w:100%"></div>
-            </div>
+            <div class="prof-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Russian: Fluent"><div class="prof-fill" style="--w:100%"></div></div>
             <span class="prof-level">Fluent</span>
           </div>
           <div class="prof-item">
             <span class="prof-lang">English</span>
-            <div class="prof-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="English: Advanced">
-              <div class="prof-fill" style="--w:80%"></div>
-            </div>
+            <div class="prof-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="English: Advanced"><div class="prof-fill" style="--w:80%"></div></div>
             <span class="prof-level">Advanced</span>
           </div>
         </div>
@@ -277,9 +243,10 @@
       <p class="body-text reveal" style="max-width:560px;margin-top:.5rem">Hardware and software builds — embedded systems, circuit design, and Linux experiments.</p>
     </header>
     <div class="project-list mt-xl">
+
       <article class="project reveal">
         <div class="proj-media">
-          <video controls preload="none"><source src="assets/media/my-first-hardware-project-gate.mp4" type="video/mp4"/></video>
+          <div class="vid-wrap"><video preload="none"><source src="assets/media/my-first-hardware-project-gate.mp4" type="video/mp4"/></video></div>
         </div>
         <div class="proj-body">
           <p class="proj-tag">C++ · Arduino · Soldering · Automatization · Embedded Systems</p>
@@ -288,9 +255,10 @@
           <div class="chips"><span>Arduino</span><span>C++</span><span>Servo motors</span><span>Sensors</span></div>
         </div>
       </article>
+
       <article class="project project-flip reveal">
         <div class="proj-media">
-          <video controls preload="none"><source src="assets/media/my-second-hardware-project-RFID-reader.mp4" type="video/mp4"/></video>
+          <div class="vid-wrap"><video preload="none"><source src="assets/media/my-second-hardware-project-RFID-reader.mp4" type="video/mp4"/></video></div>
         </div>
         <div class="proj-body">
           <p class="proj-tag">C++ · Arduino · Soldering · RFID · Embedded Systems</p>
@@ -299,9 +267,10 @@
           <div class="chips"><span>RFID</span><span>I2C/SPI</span><span>C++</span><span>Access control</span></div>
         </div>
       </article>
+
       <article class="project reveal">
         <div class="proj-media">
-          <video controls preload="none"><source src="assets/media/working-with-raspberry-pi-4B.mp4" type="video/mp4"/></video>
+          <div class="vid-wrap"><video preload="none"><source src="assets/media/working-with-raspberry-pi-4B.mp4" type="video/mp4"/></video></div>
         </div>
         <div class="proj-body">
           <p class="proj-tag">Linux · Raspberry Pi · Networking</p>
@@ -310,10 +279,11 @@
           <div class="chips"><span>Raspberry Pi 4B</span><span>Linux</span><span>Bash</span><span>Python</span></div>
         </div>
       </article>
+
       <article class="project project-flip reveal">
         <div class="proj-media">
-          <figure class="mcard proj-img-wrap">
-            <img src="assets/media/photo-of-my-workspace-while-implementing-radio-by-myself.jpg" alt="Radio implementation workspace" loading="lazy" class="proj-img"/>
+          <figure class="mcard" style="margin:0">
+            <img src="assets/media/photo-of-my-workspace-while-implementing-radio-by-myself.jpg" alt="Radio implementation workspace" loading="lazy" style="width:100%;height:auto"/>
           </figure>
         </div>
         <div class="proj-body">
@@ -323,9 +293,10 @@
           <div class="chips"><span>RF electronics</span><span>Hardware assembly</span><span>Signal processing</span></div>
         </div>
       </article>
+
       <article class="project reveal">
         <div class="proj-media">
-          <video controls preload="none"><source src="assets/media/footage-of-me-soldering-electronic-circuits.mp4" type="video/mp4"/></video>
+          <div class="vid-wrap"><video preload="none"><source src="assets/media/footage-of-me-soldering-electronic-circuits.mp4" type="video/mp4"/></video></div>
         </div>
         <div class="proj-body">
           <p class="proj-tag">Electronics · PCB · Hardware</p>
@@ -334,10 +305,11 @@
           <div class="chips"><span>Soldering</span><span>PCB assembly</span><span>Multimeter</span><span>Circuit design</span></div>
         </div>
       </article>
+
       <article class="project project-flip reveal">
         <div class="proj-media">
-          <figure class="mcard proj-img-wrap">
-            <img src="assets/media/troubleshooting-the-hardware-of-my-old-PC.jpg" alt="PC hardware troubleshooting" loading="lazy" class="proj-img"/>
+          <figure class="mcard" style="margin:0">
+            <img src="assets/media/troubleshooting-the-hardware-of-my-old-PC.jpg" alt="PC hardware troubleshooting" loading="lazy" style="width:100%;height:auto"/>
           </figure>
         </div>
         <div class="proj-body">
@@ -347,6 +319,7 @@
           <div class="chips"><span>Hardware</span><span>Diagnostics</span><span>Component Repair</span></div>
         </div>
       </article>
+
     </div>
   </section>
 
@@ -357,10 +330,11 @@
       <h2 id="h-achievements" class="reveal">Competitions <em>&amp; Awards</em></h2>
       <p class="body-text reveal" style="max-width:560px;margin-top:.5rem">Real results across robotics, drone racing, programming olympiads, and engineering challenges.</p>
     </header>
+
     <div class="ach-hero reveal mt-xl">
       <figure class="ach-fig">
-        <img src="assets/media/photo-of-my-team-AXIS-winning-finals-of-World-Space-Olympiad-in-Astana.jpg" alt="Team AXIS at World Space Olympiad" loading="lazy" width="600" height="400"/>
-        <img src="assets/media/certificate-of-winning-second-place-at-World-Space-Olympiad-with-my-team-AXIS.jpg" alt="2nd place WSO certificate" loading="lazy" class="cert-float" width="280" height="200"/>
+        <img src="assets/media/photo-of-my-team-AXIS-winning-finals-of-World-Space-Olympiad-in-Astana.jpg" alt="Team AXIS at World Space Olympiad" loading="lazy"/>
+        <img src="assets/media/certificate-of-winning-second-place-at-World-Space-Olympiad-with-my-team-AXIS.jpg" alt="2nd place certificate" loading="lazy" class="cert-float"/>
       </figure>
       <div class="ach-hero-body">
         <span class="badge badge-gold"><i class="fa-solid fa-medal" aria-hidden="true"></i>2nd Place</span>
@@ -369,47 +343,56 @@
         <p class="body-text">Competed in national finals with team AXIS — engineering design, scientific research presentation, and technical defence before an expert judging panel.</p>
       </div>
     </div>
+
     <div class="ach-grid mt-xl">
       <article class="ach-card reveal">
-        <figure><img src="assets/media/Robotics-Competition-City-Level---first-place.png" alt="City Robotics 1st place" loading="lazy" width="400" height="165"/></figure>
+        <figure><img src="assets/media/Robotics-Competition-City-Level---first-place.png" alt="City Robotics 1st place" loading="lazy"/></figure>
         <div class="ach-body"><span class="badge badge-gold">1st Place</span><h4>City Robotics Competition</h4><p>First place at city-level robotics championship.</p></div>
       </article>
       <article class="ach-card reveal">
-        <figure><img src="assets/media/picture-of-me-with-medal-third-place-regional-competitive-programming-olympiad.jpg" alt="3rd place Regional Programming Olympiad" loading="lazy" width="400" height="165"/></figure>
+        <figure><img src="assets/media/picture-of-me-with-medal-third-place-regional-competitive-programming-olympiad.jpg" alt="3rd place Regional Olympiad" loading="lazy"/></figure>
         <div class="ach-body"><span class="badge badge-bronze">3rd Place</span><h4>Regional Programming Olympiad</h4><p>3rd place at regional competitive programming olympiad.</p></div>
       </article>
       <article class="ach-card reveal">
-        <figure><img src="assets/media/winning-first-place-in-local-competitive-programming-olympiad.jpg" alt="1st place local programming olympiad" loading="lazy" width="400" height="165"/></figure>
+        <figure><img src="assets/media/winning-first-place-in-local-competitive-programming-olympiad.jpg" alt="1st place local olympiad" loading="lazy"/></figure>
         <div class="ach-body"><span class="badge badge-gold">1st Place</span><h4>Local Programming Olympiad</h4><p>First place at local competitive programming competition.</p></div>
       </article>
       <article class="ach-card reveal">
-        <figure><img src="assets/media/competed-in-the-ICode-competitive-programming-contest-hosted-by-Astana-IT-University-and-scored-31st-place-among-1000+-participants.jpg" alt="iCode contest 31st/1000+" loading="lazy" width="400" height="165"/></figure>
+        <figure><img src="assets/media/competed-in-the-ICode-competitive-programming-contest-hosted-by-Astana-IT-University-and-scored-31st-place-among-1000+-participants.jpg" alt="iCode 31st/1000+" loading="lazy"/></figure>
         <div class="ach-body"><span class="badge badge-silver">31st / 1000+</span><h4>iCode Contest · AITU</h4><p>31st place at Astana IT University's iCode programming contest.</p></div>
       </article>
       <article class="ach-card reveal">
-        <figure><img src="assets/media/my-awards-from-UAV-Code-Challenge.jpg" alt="UAV Code Challenge awards" loading="lazy" width="400" height="165"/></figure>
+        <figure><img src="assets/media/my-awards-from-UAV-Code-Challenge.jpg" alt="UAV Code Challenge awards" loading="lazy"/></figure>
         <div class="ach-body"><span class="badge badge-gold">Finalist</span><h4>UAV Code Challenge · AITU</h4><p>Awards at UAV drone programming competition.</p></div>
       </article>
       <article class="ach-card reveal">
-        <figure><img src="assets/media/certificate-of-participating-in-Batys-First-Championship-robotics-competition.jpg" alt="Batys Championship" loading="lazy" width="400" height="165"/></figure>
+        <figure><img src="assets/media/certificate-of-participating-in-Batys-First-Championship-robotics-competition.jpg" alt="Batys Championship" loading="lazy"/></figure>
         <div class="ach-body"><span class="badge badge-silver">Finalist</span><h4>Batys First Championship</h4><p>Competed in regional robotics championship.</p></div>
       </article>
     </div>
+
     <p class="label reveal" style="margin-top:3.5rem">Certifications</p>
     <div class="cert-strip reveal">
-      <figure class="cert-card"><img src="assets/media/Certificate-of-Completion-of-the-Machine-Learning-and-AI-engineering-Course.png" alt="ML & AI Certificate" loading="lazy" width="300" height="125"/><figcaption>ML &amp; AI Engineering</figcaption></figure>
-      <figure class="cert-card"><img src="assets/media/Certificate-of-Completion-of-the-Space-Robotics-Course-Based-on-the-Arduino-Kit.png" alt="Space Robotics Certificate" loading="lazy" width="300" height="125"/><figcaption>Space Robotics (Arduino)</figcaption></figure>
-      <figure class="cert-card"><img src="assets/media/Certificate-of-Participation-in-Final-Round-of-AITU-KazRoboDrone-2.0-Regional-Drone-Competiton.png" alt="KazRoboDrone 2.0 Certificate" loading="lazy" width="300" height="125"/><figcaption>KazRoboDrone 2.0 Finals</figcaption></figure>
-      <figure class="cert-card"><img src="assets/media/NSRI-Ambassador-Certificate.png" alt="NSRI Ambassador Certificate" loading="lazy" width="300" height="125"/><figcaption>NSRI Ambassador</figcaption></figure>
+      <figure class="cert-card"><img src="assets/media/Certificate-of-Completion-of-the-Machine-Learning-and-AI-engineering-Course.png" alt="ML & AI Certificate" loading="lazy"/><figcaption>ML &amp; AI Engineering</figcaption></figure>
+      <figure class="cert-card"><img src="assets/media/Certificate-of-Completion-of-the-Space-Robotics-Course-Based-on-the-Arduino-Kit.png" alt="Space Robotics Certificate" loading="lazy"/><figcaption>Space Robotics (Arduino)</figcaption></figure>
+      <figure class="cert-card"><img src="assets/media/Certificate-of-Participation-in-Final-Round-of-AITU-KazRoboDrone-2.0-Regional-Drone-Competiton.png" alt="KazRoboDrone 2.0 Certificate" loading="lazy"/><figcaption>KazRoboDrone 2.0 Finals</figcaption></figure>
+      <figure class="cert-card"><img src="assets/media/NSRI-Ambassador-Certificate.png" alt="NSRI Ambassador Certificate" loading="lazy"/><figcaption>NSRI Ambassador</figcaption></figure>
     </div>
+
     <p class="label reveal" style="margin-top:3.5rem">In Action</p>
     <div class="g3 reveal">
-      <figure class="mcard"><img src="assets/media/participating-in-finals-of-KazRoboDrone-drone-simulator-competition-hosted-by-Astana-IT-University-with-my-team.jpg" alt="KazRoboDrone Finals at AITU" loading="lazy" width="400" height="280"/><figcaption><i class="fa-solid fa-circle-dot" aria-hidden="true"></i>KazRoboDrone Finals · AITU</figcaption></figure>
-      <figure class="mcard"><video controls preload="none"><source src="assets/media/experimenting-with-pressure-with-my-team-for-KazRockets-engineering-competition.mp4" type="video/mp4"/></video><figcaption><i class="fa-solid fa-rocket" aria-hidden="true"></i>KazRockets — Pressure Experiment</figcaption></figure>
-      <figure class="mcard"><img src="assets/media/picture-of-me-and-my-scientific-mentor-participating-in-the-finals-of-UAV-Code-Challenge-hosted-by-Astana-IT-University.jpg" alt="UAV Code Challenge Finals" loading="lazy" width="400" height="280"/><figcaption><i class="fa-solid fa-user-graduate" aria-hidden="true"></i>UAV Code Challenge Finals</figcaption></figure>
-      <figure class="mcard"><img src="assets/media/a-photo-of-us-with-my-partner-waiting-for-our-turn-to-present-our-project-at-the-finals-of-Pizza-Pitch-competition.jpg" alt="Pizza Pitch Competition Finals" loading="lazy" width="400" height="280"/><figcaption><i class="fa-solid fa-lightbulb" aria-hidden="true"></i>Pizza Pitch Competition Finals</figcaption></figure>
-      <figure class="mcard"><img src="assets/media/picture-of-trip-with-my-team-XFORCE-arriving-to-Aktau-for-participating-in-Fist-Lego-League-Championship.jpg" alt="Team XFORCE at First Lego League" loading="lazy" width="400" height="280"/><figcaption><i class="fa-solid fa-bus" aria-hidden="true"></i>Team XFORCE — First Lego League, Aktau</figcaption></figure>
-      <figure class="mcard"><video controls preload="none"><source src="assets/media/filming-a-video-about-our-social-impact-project-for-submission-to-Technovation-with-my-teammate.mp4" type="video/mp4"/></video><figcaption><i class="fa-brands fa-youtube" aria-hidden="true"></i>Technovation Social Impact Project</figcaption></figure>
+      <figure class="mcard"><img src="assets/media/participating-in-finals-of-KazRoboDrone-drone-simulator-competition-hosted-by-Astana-IT-University-with-my-team.jpg" alt="KazRoboDrone Finals" loading="lazy"/><figcaption><i class="fa-solid fa-circle-dot" aria-hidden="true"></i>KazRoboDrone Finals · AITU</figcaption></figure>
+      <figure class="mcard vid-mcard">
+        <div class="vid-wrap"><video preload="none"><source src="assets/media/experimenting-with-pressure-with-my-team-for-KazRockets-engineering-competition.mp4" type="video/mp4"/></video></div>
+        <figcaption><i class="fa-solid fa-rocket" aria-hidden="true"></i>KazRockets — Pressure Experiment</figcaption>
+      </figure>
+      <figure class="mcard"><img src="assets/media/picture-of-me-and-my-scientific-mentor-participating-in-the-finals-of-UAV-Code-Challenge-hosted-by-Astana-IT-University.jpg" alt="UAV Code Challenge Finals" loading="lazy"/><figcaption><i class="fa-solid fa-user-graduate" aria-hidden="true"></i>UAV Code Challenge Finals</figcaption></figure>
+      <figure class="mcard"><img src="assets/media/a-photo-of-us-with-my-partner-waiting-for-our-turn-to-present-our-project-at-the-finals-of-Pizza-Pitch-competition.jpg" alt="Pizza Pitch Finals" loading="lazy"/><figcaption><i class="fa-solid fa-lightbulb" aria-hidden="true"></i>Pizza Pitch Competition Finals</figcaption></figure>
+      <figure class="mcard"><img src="assets/media/picture-of-trip-with-my-team-XFORCE-arriving-to-Aktau-for-participating-in-Fist-Lego-League-Championship.jpg" alt="Team XFORCE" loading="lazy"/><figcaption><i class="fa-solid fa-bus" aria-hidden="true"></i>Team XFORCE — First Lego League, Aktau</figcaption></figure>
+      <figure class="mcard vid-mcard">
+        <div class="vid-wrap"><video preload="none"><source src="assets/media/filming-a-video-about-our-social-impact-project-for-submission-to-Technovation-with-my-teammate.mp4" type="video/mp4"/></video></div>
+        <figcaption><i class="fa-brands fa-youtube" aria-hidden="true"></i>Technovation Social Impact Project</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -420,7 +403,8 @@
       <h2 id="h-nsri" class="reveal">National Student<br><em>Research Institute</em></h2>
     </header>
     <div class="nsri-banner reveal mt-xl">
-      <img src="assets/nsri-logo.png" alt="NSRI logo" class="nsri-logo" width="80" height="60"/>
+      <!-- nsri-logo.png must be placed in assets/ folder -->
+      <img src="assets/nsri-logo.png" alt="NSRI logo" class="nsri-logo"/>
       <div>
         <h3>Global Research Pipeline for Students</h3>
         <p class="body-text">NSRI connects high school students, undergraduates, and PhD-level mentors into one structured system for real, publishable research. Founded by a student affiliated with MIT Critical Data.</p>
@@ -446,13 +430,16 @@
         </div>
       </div>
       <figure class="mcard reveal">
-        <img src="assets/media/NSRI-Ambassador-Certificate.png" alt="NSRI Ambassador Certificate" loading="lazy" width="600" height="400"/>
+        <img src="assets/media/NSRI-Ambassador-Certificate.png" alt="NSRI Ambassador Certificate" loading="lazy"/>
         <figcaption><i class="fa-solid fa-certificate" aria-hidden="true"></i>NSRI School Ambassador Certificate · January 2026</figcaption>
       </figure>
     </div>
     <div class="g2 mt-xl">
-      <figure class="mcard reveal"><img src="assets/media/picture-of-my-students-receiving-awards-after-the-robotics-local-competition-event-I-organized-at-my-school.jpg" alt="Students receiving awards at robotics competition" loading="lazy" width="600" height="400"/><figcaption><i class="fa-solid fa-award" aria-hidden="true"></i>Students receiving their awards at the robotics competition I organized</figcaption></figure>
-      <figure class="mcard reveal"><video controls preload="none"><source src="assets/media/a-battle-of-robots-constructed-by-my-students-from-my-school.mp4" type="video/mp4"/></video><figcaption><i class="fa-solid fa-robot" aria-hidden="true"></i>Fighting robots — built by my students</figcaption></figure>
+      <figure class="mcard reveal"><img src="assets/media/picture-of-my-students-receiving-awards-after-the-robotics-local-competition-event-I-organized-at-my-school.jpg" alt="Students receiving awards" loading="lazy"/><figcaption><i class="fa-solid fa-award" aria-hidden="true"></i>Students receiving their awards at the robotics competition I organized</figcaption></figure>
+      <figure class="mcard vid-mcard reveal">
+        <div class="vid-wrap"><video preload="none"><source src="assets/media/a-battle-of-robots-constructed-by-my-students-from-my-school.mp4" type="video/mp4"/></video></div>
+        <figcaption><i class="fa-solid fa-robot" aria-hidden="true"></i>Fighting robots — built by my students</figcaption>
+      </figure>
     </div>
     <div class="pathways mt-xl">
       <article class="pathway reveal">
@@ -508,8 +495,8 @@
         </li>
       </ol>
       <div class="edu-side">
-        <figure class="mcard reveal"><img src="assets/media/preparing-for-finals-of-UAV-Code-Challenge-drone-programming-competition-in-Astana.jpg" alt="UAV prep in Astana" loading="lazy" width="300" height="240"/><figcaption><i class="fa-solid fa-circle-dot" aria-hidden="true"></i>UAV Code Challenge finals prep · Astana</figcaption></figure>
-        <figure class="mcard reveal"><img src="assets/media/picture-of-me-winning-in-city-level-competitive-programming-olympiad-with-my-informatics-teacher.jpg" alt="City olympiad win" loading="lazy" width="300" height="240"/><figcaption><i class="fa-solid fa-trophy" aria-hidden="true"></i>City Programming Olympiad — with my informatics teacher</figcaption></figure>
+        <figure class="mcard reveal"><img src="assets/media/preparing-for-finals-of-UAV-Code-Challenge-drone-programming-competition-in-Astana.jpg" alt="UAV prep in Astana" loading="lazy"/><figcaption><i class="fa-solid fa-circle-dot" aria-hidden="true"></i>UAV Code Challenge finals prep · Astana</figcaption></figure>
+        <figure class="mcard reveal"><img src="assets/media/picture-of-me-winning-in-city-level-competitive-programming-olympiad-with-my-informatics-teacher.jpg" alt="City olympiad win" loading="lazy"/><figcaption><i class="fa-solid fa-trophy" aria-hidden="true"></i>City Programming Olympiad — with my informatics teacher</figcaption></figure>
       </div>
     </div>
   </section>
@@ -519,32 +506,42 @@
     <header class="sec-head">
       <p class="label reveal">Moments</p>
       <h2 id="h-gallery" class="reveal">Photo <em>&amp; Video Gallery</em></h2>
-      <p class="body-text reveal" style="max-width:540px;margin-top:.5rem">Snapshots from competitions, lab work, travel, and study sessions. Click any item to view full-size.</p>
+      <p class="body-text reveal" style="max-width:540px;margin-top:.5rem">Snapshots from competitions, lab work, travel, and study sessions. Double-click any item to view full size.</p>
     </header>
     <div class="masonry mt-xl">
       <div class="m-col">
-        <figure class="gitem reveal" tabindex="0"><img src="assets/media/photo-of-my-setup-for-preparing-to-drone-simulator-competitions.jpg" alt="Drone simulator setup" loading="lazy" width="400" height="300"/><div class="gcap">Drone simulator practice setup</div></figure>
-        <figure class="gitem reveal" tabindex="0"><video preload="none"><source src="assets/media/video-of-me-flying-on-my-first-drone.mp4" type="video/mp4"/></video><div class="gcap">Flying my first drone</div></figure>
-        <figure class="gitem reveal" tabindex="0"><img src="assets/media/picture-of-my-first-drone-ever.jpg" alt="First drone" loading="lazy" width="400" height="300"/><div class="gcap">My very first drone</div></figure>
+        <figure class="gitem reveal" tabindex="0"><img src="assets/media/photo-of-my-setup-for-preparing-to-drone-simulator-competitions.jpg" alt="Drone simulator setup" loading="lazy"/><div class="gcap">Drone simulator practice setup</div></figure>
+        <figure class="gitem reveal" tabindex="0">
+          <div class="vid-wrap gvid"><video preload="none"><source src="assets/media/video-of-me-flying-on-my-first-drone.mp4" type="video/mp4"/></video></div>
+          <div class="gcap">Flying my first drone</div>
+        </figure>
+        <figure class="gitem reveal" tabindex="0"><img src="assets/media/picture-of-my-first-drone-ever.jpg" alt="First drone" loading="lazy"/><div class="gcap">My very first drone</div></figure>
       </div>
       <div class="m-col">
-        <figure class="gitem reveal" tabindex="0"><img src="assets/media/picture-of-me-focusing-on-preparing-for-competitive-programming-olympiad.jpg" alt="Olympiad prep" loading="lazy" width="400" height="300"/><div class="gcap">Deep focus — olympiad prep</div></figure>
-        <figure class="gitem reveal" tabindex="0"><video preload="none"><source src="assets/media/video-of-me-focusing-on-preparing-for-competitive-programming-olympiad.mp4" type="video/mp4"/></video><div class="gcap">Programming olympiad session</div></figure>
-        <figure class="gitem reveal" tabindex="0"><video preload="none"><source src="assets/media/troubleshooting-my-first-hardware-project-gate.mp4" type="video/mp4"/></video><div class="gcap">Debugging the gate project</div></figure>
+        <figure class="gitem reveal" tabindex="0"><img src="assets/media/picture-of-me-focusing-on-preparing-for-competitive-programming-olympiad.jpg" alt="Olympiad prep" loading="lazy"/><div class="gcap">Deep focus — olympiad prep</div></figure>
+        <figure class="gitem reveal" tabindex="0">
+          <div class="vid-wrap gvid"><video preload="none"><source src="assets/media/video-of-me-focusing-on-preparing-for-competitive-programming-olympiad.mp4" type="video/mp4"/></video></div>
+          <div class="gcap">Programming olympiad session</div>
+        </figure>
+        <figure class="gitem reveal" tabindex="0">
+          <div class="vid-wrap gvid"><video preload="none"><source src="assets/media/troubleshooting-my-first-hardware-project-gate.mp4" type="video/mp4"/></video></div>
+          <div class="gcap">Debugging the gate project</div>
+        </figure>
       </div>
       <div class="m-col">
-        <figure class="gitem reveal" tabindex="0"><img src="assets/media/hardware-troubleshooting-of-my-old-PC.jpg" alt="PC repair" loading="lazy" width="400" height="300"/><div class="gcap">PC hardware repair</div></figure>
-        <figure class="gitem reveal" tabindex="0"><img src="assets/media/Certificate-of-Participation-in-Regional-Robotics-Competition.png" alt="Robotics cert" loading="lazy" width="400" height="300"/><div class="gcap">Regional Robotics Certificate</div></figure>
-        <figure class="gitem reveal" tabindex="0"><img src="assets/media/picture-of-me-and-my-scientific-mentor-participating-in-the-finals-of-UAV-Code-Challenge-hosted-by-Astana-IT-University.jpg" alt="UAV finals" loading="lazy" width="400" height="300"/><div class="gcap">UAV Code Challenge · AITU</div></figure>
+        <figure class="gitem reveal" tabindex="0"><img src="assets/media/hardware-troubleshooting-of-my-old-PC.jpg" alt="PC repair" loading="lazy"/><div class="gcap">PC hardware repair</div></figure>
+        <figure class="gitem reveal" tabindex="0"><img src="assets/media/Certificate-of-Participation-in-Regional-Robotics-Competition.png" alt="Robotics cert" loading="lazy"/><div class="gcap">Regional Robotics Certificate</div></figure>
+        <figure class="gitem reveal" tabindex="0"><img src="assets/media/picture-of-me-and-my-scientific-mentor-participating-in-the-finals-of-UAV-Code-Challenge-hosted-by-Astana-IT-University.jpg" alt="UAV finals" loading="lazy"/><div class="gcap">UAV Code Challenge · AITU</div></figure>
       </div>
     </div>
   </section>
 
-  <!-- LIGHTBOX -->
-  <div id="lb" class="lb" role="dialog" aria-modal="true" aria-label="Media viewer">
-    <div class="lb-panel">
-      <button id="lb-close" class="lb-close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
-      <div id="lb-content"></div>
+  <!-- MEDIA VIEWER (in-page modal — double-click) -->
+  <div id="viewer" class="viewer" role="dialog" aria-modal="true" aria-label="Media viewer" hidden>
+    <div class="viewer-backdrop" id="viewer-backdrop"></div>
+    <div class="viewer-box">
+      <button class="viewer-close" id="viewer-close" aria-label="Close viewer"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      <div class="viewer-content" id="viewer-content"></div>
     </div>
   </div>
 
@@ -557,19 +554,23 @@
     </header>
     <div class="hobbies mt-xl">
       <article class="hobby hobby-wide reveal">
-        <div class="hob-media"><video controls preload="none"><source src="assets/media/playing-guitar-and-singing-my-favourite-song.mp4" type="video/mp4"/></video></div>
+        <div class="hob-media">
+          <div class="vid-wrap"><video preload="none"><source src="assets/media/playing-guitar-and-singing-my-favourite-song.mp4" type="video/mp4"/></video></div>
+        </div>
         <div class="hob-body"><i class="fa-solid fa-guitar hob-ico" aria-hidden="true"></i><h3>Guitar &amp; Music</h3><p>Self-taught guitarist. Music is the counterbalance to long technical sessions — a reminder that creativity extends beyond code.</p></div>
       </article>
       <article class="hobby reveal">
-        <div class="hob-media"><img src="assets/media/photo-of-my-setup-for-preparing-to-drone-simulator-competitions.jpg" alt="FPV drone setup" loading="lazy" width="600" height="400"/></div>
+        <div class="hob-media"><img src="assets/media/photo-of-my-setup-for-preparing-to-drone-simulator-competitions.jpg" alt="FPV drone setup" loading="lazy"/></div>
         <div class="hob-body"><i class="fa-solid fa-helicopter hob-ico" aria-hidden="true"></i><h3>FPV Drones</h3><p>Passionate about drone flying, simulation, and UAV programming. Competes in DCL, LiftOff, and KazRoboDrone simulator championships.</p></div>
       </article>
       <article class="hobby reveal">
-        <div class="hob-media"><video controls preload="none"><source src="assets/media/me-preparing-for-IELTS.mp4" type="video/mp4"/></video></div>
+        <div class="hob-media">
+          <div class="vid-wrap"><video preload="none"><source src="assets/media/me-preparing-for-IELTS.mp4" type="video/mp4"/></video></div>
+        </div>
         <div class="hob-body"><i class="fa-solid fa-language hob-ico" aria-hidden="true"></i><h3>Languages &amp; IELTS</h3><p>Trilingual in Kazakh, Russian, and English — targeting IELTS 7.5+ for international university applications.</p></div>
       </article>
       <article class="hobby reveal">
-        <div class="hob-media"><img src="assets/media/photo-of-my-workspace-while-implementing-radio-by-myself.jpg" alt="Electronics workspace" loading="lazy" width="600" height="400"/></div>
+        <div class="hob-media"><img src="assets/media/photo-of-my-workspace-while-implementing-radio-by-myself.jpg" alt="Electronics workspace" loading="lazy"/></div>
         <div class="hob-body"><i class="fa-solid fa-wrench hob-ico" aria-hidden="true"></i><h3>Electronics &amp; Lock-picking</h3><p>Tinkering with circuits and exploring lock-picking — the security mindset made physical. Understanding how things fail.</p></div>
       </article>
     </div>
@@ -644,8 +645,17 @@
     </div>
   </footer>
 
+</div><!-- /wrap -->
+
+<!-- LIGHTBOX (gallery single-click) -->
+<div id="lb" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <div class="lb-panel">
+    <button id="lb-close" class="lb-close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+    <div id="lb-content"></div>
+  </div>
 </div>
+
 <script src="app.js"></script>
-<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
 </html>
