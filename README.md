@@ -22,7 +22,7 @@ A personal portfolio website built to support university applications, scholarsh
 
 ## Overview
 
-This is a fully static, no-framework personal portfolio. Every section is written in plain HTML, styled with CSS custom properties, and animated with vanilla JavaScript — no build tools, no dependencies to install, no Node.js required. Just open `index.html` in a browser or push to GitHub Pages.
+This is a fully static, no-framework personal portfolio. Every section is written in plain HTML, styled with CSS custom properties, and animated with vanilla JavaScript - no build tools, no dependencies to install, no Node.js required. Just open `index.html` in a browser or push to GitHub Pages.
 
 ---
 
@@ -105,14 +105,14 @@ git push -u origin main
 | Styles | CSS3 + custom Properties | full control, responsive, no tailwind/bootstrap |
 | Scripts | Vanilla JavaScript (ES6+) | zero dependencies, fast load |
 | Icons | Font awesome 6 | brand icons (GitHub, LinkedIn, etc.) + UI icons |
-| Fonts | Playfair display · Outfit · JetBrains Mono | Google Fonts — serif display, clean body, monospace labels |
+| Fonts | Playfair display · Outfit · JetBrains Mono | Google Fonts |
 | Hosting | GitHub Pages | free, fast, version-controlled |
 
 **JavaScript features used:**
-- `IntersectionObserver` — scroll-reveal animations + active nav link tracking
-- `requestAnimationFrame` — counter animations + photo parallax
-- CSS `transform` + `transition` — all animations, no JS animation libraries
-- Lightbox — custom-built, no jQuery
+- `IntersectionObserver` - scroll-reveal animations + active nav link tracking
+- `requestAnimationFrame` - counter animations + photo parallax
+- CSS `transform` + `transition` - all animations, no JS animation libraries
+- Lightbox - custom-built, no jQuery
 
 ---
 
