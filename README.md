@@ -136,8 +136,8 @@ git push -u origin main
 - **LinkedIn:** [aruzhan-maratova](https://www.linkedin.com/in/aruzhan-maratova/)
 - **Instagram:** [@herachxx](https://www.instagram.com/herachxx/)
 - **YouTube:** [@herachxx](https://www.youtube.com/@herachxx)
-
 Be free to ask any questions! ❤️
+
 ---
 
 ## License
