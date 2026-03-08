@@ -1,4 +1,4 @@
-# Aruzhan Maratova — personal portfolio
+# Aruzhan Maratova - personal portfolio
 
 > Cybersecurity researcher · CTF Player · Director at NSRI · MIT applicant  
 > Aktobe, Kazakhstan · Class of 2027
@@ -118,14 +118,14 @@ git push -u origin main
 
 ## Features
 
-- **Responsive** — works on all screen sizes from 360px mobile to 4K desktop
-- **Side navigation** — opens automatically on desktop, slides over on mobile; hamburger animates to ×
-- **Scroll progress bar** — thin gold line at the top of the page
-- **Animated counters** — stats count up when they scroll into view
-- **Gallery lightbox** — click any photo or video in the gallery to view fullscreen
-- **Lazy loading** — all images use `loading="lazy"`, videos use `preload="none"` with IntersectionObserver
-- **No cookies, no tracking, no analytics** — fully static, privacy-respecting
-- **Accessible** — semantic HTML5, ARIA labels, keyboard navigation support
+- **Responsive** - works on all screen sizes from 360px mobile to 4K desktop
+- **Side navigation** - opens automatically on desktop, slides over on mobile; hamburger animates to ×
+- **Scroll progress bar** - thin gold line at the top of the page
+- **Animated counters** - stats count up when they scroll into view
+- **Gallery lightbox** - click any photo or video in the gallery to view fullscreen
+- **Lazy loading** - all images use `loading="lazy"`, videos use `preload="none"` with IntersectionObserver
+- **No cookies, no tracking, no analytics** - fully static, privacy-respecting
+- **Accessible** - semantic HTML5, ARIA labels, keyboard navigation support
 
 ---
 
