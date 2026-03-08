@@ -15,12 +15,11 @@ function initProgress() {
   update();
 }
 
-/* SIDE NAV */
+/* SIDE NAV  (hamburger is the only toggle — no sn-close button) */
 function initNav() {
   const btn     = $('nav-btn');
   const nav     = $('sidenav');
   const wrap    = $('wrap');
-  const close   = $('sn-close');
   const overlay = $('nav-overlay');
   if (!btn || !nav) return;
 
@@ -34,7 +33,7 @@ function initNav() {
     btn.setAttribute('aria-expanded', 'true');
     nav.setAttribute('aria-hidden', 'false');
     if (isWide()) wrap?.classList.add('is-pushed');
-    else if (overlay) overlay.classList.add('visible');
+    else overlay?.classList.add('visible');
   }
   function closeNav() {
     open = false;
@@ -43,22 +42,18 @@ function initNav() {
     btn.setAttribute('aria-expanded', 'false');
     nav.setAttribute('aria-hidden', 'true');
     wrap?.classList.remove('is-pushed');
-    if (overlay) overlay.classList.remove('visible');
+    overlay?.classList.remove('visible');
   }
 
-  // auto-open on desktop
   if (isWide()) openNav();
 
   btn.addEventListener('click', () => open ? closeNav() : openNav());
-  close?.addEventListener('click', closeNav);
   overlay?.addEventListener('click', closeNav);
 
-  // close on link click (mobile)
   $$('.sn-nav a').forEach(a => a.addEventListener('click', () => {
     if (!isWide()) closeNav();
   }));
 
-  // escape key
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && open) closeNav();
   });
@@ -77,7 +72,6 @@ function initNav() {
 function initActiveLink() {
   const links = $$('.sn-nav a[href^="#"]');
   if (!links.length) return;
-
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -87,13 +81,11 @@ function initActiveLink() {
       }
     });
   }, { threshold: 0.25, rootMargin: '-80px 0px -40% 0px' });
-
   $$('section[id]').forEach(s => obs.observe(s));
 }
 
 /* SCROLL REVEAL */
 function initReveal() {
-  // Respect reduced motion
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     $$('.reveal').forEach(el => el.classList.add('on'));
     return;
@@ -102,10 +94,7 @@ function initReveal() {
   if (!items.length) return;
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('on');
-        obs.unobserve(e.target);
-      }
+      if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
     });
   }, { threshold: 0.06, rootMargin: '0px 0px -28px 0px' });
   items.forEach(el => obs.observe(el));
@@ -124,9 +113,7 @@ function initStagger() {
     '.masonry .gitem',
     '.tag-cloud .tag',
   ].forEach(sel => {
-    $$(sel).forEach((el, i) => {
-      el.style.transitionDelay = (i * 0.055) + 's';
-    });
+    $$(sel).forEach((el, i) => { el.style.transitionDelay = (i * 0.055) + 's'; });
   });
 }
 
@@ -139,9 +126,8 @@ function initSmoothScroll() {
       const target = document.getElementById(id);
       if (!target) return;
       e.preventDefault();
-      const offset = window.innerWidth >= 900 ? 20 : 12;
       window.scrollTo({
-        top: target.getBoundingClientRect().top + window.scrollY - offset,
+        top: target.getBoundingClientRect().top + window.scrollY - 20,
         behavior: 'smooth'
       });
     });
@@ -153,27 +139,21 @@ function countUp(el) {
   const raw = el.textContent.trim();
   const val = parseFloat(raw.replace(/[^0-9.]/g, ''));
   if (isNaN(val)) return;
-
   const dur = 1200;
   const start = performance.now();
-
   const step = now => {
-    const p = Math.min((now - start) / dur, 1);
+    const p    = Math.min((now - start) / dur, 1);
     const ease = 1 - Math.pow(1 - p, 3);
-    const cur = Math.round(ease * val);
-
+    const cur  = Math.round(ease * val);
     let out = '';
     if (raw.startsWith('$')) out += '$';
-    if (raw.includes(',')) out += cur.toLocaleString();
-    else out += cur;
+    out += raw.includes(',') ? cur.toLocaleString() : cur;
     if (raw.includes('+')) out += '+';
     if (raw.includes('K')) out += 'K';
-
     el.textContent = out;
     if (p < 1) requestAnimationFrame(step);
-    else el.textContent = raw; // restore exact original
+    else el.textContent = raw;
   };
-
   requestAnimationFrame(step);
 }
 
@@ -182,62 +162,120 @@ function initCounters() {
   const els = $$('.stat-n, .ns-n');
   if (!els.length) return;
   const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        countUp(e.target);
-        obs.unobserve(e.target);
-      }
-    });
+    entries.forEach(e => { if (e.isIntersecting) { countUp(e.target); obs.unobserve(e.target); } });
   }, { threshold: 0.6 });
   els.forEach(el => obs.observe(el));
 }
 
-/* PORTRAIT PARALLAX (desktop only) */
+/* PORTRAIT PARALLAX */
 function initParallax() {
   const el = $('portrait');
   if (!el || window.innerWidth < 900) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
   let raf = false;
-
   document.addEventListener('mousemove', e => {
     if (raf) return;
     raf = true;
     requestAnimationFrame(() => {
-      const rx = (e.clientX / window.innerWidth - 0.5) * 2;
+      const rx = (e.clientX / window.innerWidth  - 0.5) * 2;
       const ry = (e.clientY / window.innerHeight - 0.5) * 2;
       el.style.transform = `perspective(900px) rotateY(${rx * 2.6}deg) rotateX(${-ry * 1.8}deg)`;
       raf = false;
     });
   });
-
   document.addEventListener('mouseleave', () => {
     el.style.transition = 'transform .6s ease';
-    el.style.transform = '';
+    el.style.transform  = '';
     setTimeout(() => { el.style.transition = ''; }, 620);
   });
 }
 
-/* GALLERY LIGHTBOX */
+/* VIDEO OVERLAYS  — play/pause button on every <video controls>
+   shows pause icon when paused/ended; hides when playing. */
+function initVideoOverlays() {
+  $$('video[controls]').forEach(vid => {
+    // wrap video in .vid-wrap if not already wrapped
+    const parent = vid.parentElement;
+    let wrap;
+    if (parent.classList.contains('vid-wrap')) {
+      wrap = parent;
+    } else {
+      wrap = document.createElement('div');
+      wrap.className = 'vid-wrap';
+      // copy border-radius from a proj-media video context if needed
+      parent.insertBefore(wrap, vid);
+      wrap.appendChild(vid);
+    }
+
+    // create overlay button
+    const btn = document.createElement('button');
+    btn.className  = 'vid-btn';
+    btn.type       = 'button';
+    btn.setAttribute('aria-label', 'Play video');
+    btn.innerHTML  = '<span class="vid-btn-icon"><i class="fa-solid fa-pause"></i></span>';
+    wrap.appendChild(btn);
+
+    const icon = btn.querySelector('i');
+
+    function showPause() {
+      icon.className = 'fa-solid fa-pause';
+      btn.setAttribute('aria-label', 'Playing — click to pause');
+      btn.classList.remove('hidden');
+    }
+    function showPlay() {
+      icon.className = 'fa-solid fa-play';
+      btn.setAttribute('aria-label', 'Play video');
+      btn.classList.remove('hidden');
+    }
+    function hideBtn() {
+      btn.classList.add('hidden');
+    }
+
+    // initial state: video is paused → show pause icon
+    showPause();
+
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      if (vid.paused || vid.ended) {
+        vid.play().catch(() => {});
+      } else {
+        vid.pause();
+      }
+    });
+
+    // when video starts playing → hide the overlay
+    vid.addEventListener('play', hideBtn);
+
+    // when video is paused manually → show play icon
+    vid.addEventListener('pause', () => {
+      if (!vid.ended) showPlay();
+    });
+
+    // when video ends → show pause icon again (reset state indicator)
+    vid.addEventListener('ended', showPause);
+  });
+}
+
+/* GALLERY LIGHTBOX  (gallery .gitem click → lightbox) */
 function initLightbox() {
   const lb    = $('lb');
   const panel = $('lb-content');
   const close = $('lb-close');
   if (!lb) return;
 
-  function open(src, isVideo) {
+  function openLb(src, isVideo) {
     panel.innerHTML = '';
     const el = document.createElement(isVideo ? 'video' : 'img');
     el.src = src;
-    if (isVideo) { el.controls = true; el.autoplay = true; el.setAttribute('aria-label', 'Media viewer'); }
+    if (isVideo) { el.controls = true; el.autoplay = true; }
     el.alt = '';
     panel.appendChild(el);
     lb.classList.add('open');
     document.body.style.overflow = 'hidden';
-    close.focus();
+    close?.focus();
   }
 
-  function shut() {
+  function closeLb() {
     lb.classList.remove('open');
     document.body.style.overflow = '';
     const v = panel.querySelector('video');
@@ -249,18 +287,31 @@ function initLightbox() {
     item.addEventListener('click', () => {
       const vs  = item.querySelector('video source');
       const img = item.querySelector('img');
-      if (vs) open(vs.src, true);
-      else if (img) open(img.src, false);
+      if (vs)  openLb(vs.src, true);
+      else if (img) openLb(img.src, false);
     });
     item.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); item.click(); }
     });
   });
 
-  close?.addEventListener('click', shut);
-  lb.addEventListener('click', e => { if (e.target === lb) shut(); });
+  close?.addEventListener('click', closeLb);
+  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && lb.classList.contains('open')) shut();
+    if (e.key === 'Escape' && lb.classList.contains('open')) closeLb();
+  });
+}
+
+/* DOUBLE-CLICK IMAGE → open full size in new tab
+   applies to all images except those inside the lightbox itself */
+function initImageDblClick() {
+  $$('img').forEach(img => {
+    // skip lightbox content
+    if (img.closest('#lb-content') || img.closest('.portrait-badge')) return;
+    img.addEventListener('dblclick', () => {
+      const src = img.src;
+      if (src) window.open(src, '_blank', 'noopener');
+    });
   });
 }
 
@@ -269,12 +320,7 @@ function initVideoLazy() {
   const vids = $$('video[preload="none"]');
   if (!vids.length) return;
   const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.load();
-        obs.unobserve(e.target);
-      }
-    });
+    entries.forEach(e => { if (e.isIntersecting) { e.target.load(); obs.unobserve(e.target); } });
   }, { rootMargin: '300px' });
   vids.forEach(v => obs.observe(v));
 }
@@ -290,10 +336,7 @@ function initLangBars() {
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        // Stagger the fills
-        fills.forEach((fill, i) => {
-          setTimeout(() => fill.classList.add('animated'), i * 180);
-        });
+        fills.forEach((fill, i) => setTimeout(() => fill.classList.add('animated'), i * 180));
         obs.disconnect();
       }
     });
@@ -302,44 +345,10 @@ function initLangBars() {
   if (card) obs.observe(card);
 }
 
-/* BACK TO TOP on double-click logo */
-function initLogoClick() {
-  const brand = document.querySelector('.sn-brand');
-  if (!brand) return;
-  brand.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-}
-
-/* HERO VIDEO PLAY on hover (gallery items) */
-function initHoverVideos() {
-  $$('.gitem video').forEach(vid => {
-    const item = vid.closest('.gitem');
-    if (!item) return;
-    item.addEventListener('mouseenter', () => { vid.play().catch(() => {}); });
-    item.addEventListener('mouseleave', () => { vid.pause(); vid.currentTime = 0; });
-  });
-}
-
-/* KEYBOARD NAVIGATION IMPROVEMENTS */
+/* KEYBOARD ACCESSIBILITY */
 function initKeyboardNav() {
-  // Make skill cards focusable for keyboard users
-  $$('.skill-card, .ach-card, .goal, .ccard').forEach(el => {
-    if (!el.hasAttribute('tabindex') && el.tagName !== 'A') {
-      el.setAttribute('tabindex', '0');
-    }
-  });
-}
-
-/* COPY EMAIL ON CLICK */
-function initCopyEmail() {
-  const emailCard = document.querySelector('a[href^="mailto:"]');
-  if (!emailCard) return;
-  emailCard.addEventListener('click', e => {
-    const email = emailCard.href.replace('mailto:', '');
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(email).catch(() => {});
-    }
+  $$('.skill-card, .ach-card, .goal').forEach(el => {
+    if (el.tagName !== 'A') el.setAttribute('tabindex', '0');
   });
 }
 
@@ -353,10 +362,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initCounters();
   initParallax();
+  initVideoOverlays();   // must run before lightbox so vids are wrapped
   initLightbox();
+  initImageDblClick();
   initVideoLazy();
   initLangBars();
-  initLogoClick();
-  initHoverVideos();
   initKeyboardNav();
 });
