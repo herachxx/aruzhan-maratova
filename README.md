@@ -9,7 +9,7 @@ A personal portfolio website built to support university applications, scholarsh
 
 ---
 
-## Contents
+## Content
 
 - [Overview](#overview)
 - [Sections](#sections)
@@ -40,23 +40,23 @@ This is a fully static, no-framework personal portfolio. Every section is writte
 | **Gallery** | photo and video gallery with lightbox viewer |
 | **Hobbies** | guitar, FPV drones, languages & IELTS prep, electronics & lock-picking |
 | **Goals** | academic targets for 2027: MIT, IELTS 7.5+, SAT 1500+, published research |
-| **Contact** | Email, GitHub, LinkedIn, Instagram, YouTube |
+| **Contact me** | Email, GitHub, LinkedIn, Instagram, YouTube |
 
 ---
 
 ## Project structure
 
 ```
-portfolio/
-├── index.html          # All HTML — single page
-├── styles.css          # All styles — CSS custom properties, responsive
-├── app.js              # All JavaScript — no frameworks
+aruzhan-maratova/
+├── index.html          
+├── styles.css          
+├── app.js              
 └── assets/
     ├── aruzhan.jpeg    # Profile photo
     ├── nsri-logo.png   # NSRI logo
     ├── favicon.ico     # Browser tab icon
     ├── favicon.png     # Browser tab icon (PNG)
-    └── media/          # 41+ photos and videos
+    └── media/          # additional photos and videos
         ├── *.jpg
         ├── *.png
         └── *.mp4
