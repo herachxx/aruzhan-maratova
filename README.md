@@ -1,11 +1,11 @@
-# Aruzhan Maratova — Personal Portfolio
+# Aruzhan Maratova — personal portfolio
 
-> Cybersecurity Researcher · CTF Player · NSRI Program Director · MIT Applicant  
-> Aktobe, Kazakhstan · Grade 10 · Class of 2027
+> Cybersecurity researcher · CTF Player · Director at NSRI · MIT applicant  
+> Aktobe, Kazakhstan · Class of 2027
 
 A personal portfolio website built to support university applications, scholarship submissions, and professional outreach. Showcases projects, competition achievements, skills, research work, and personal interests.
 
-**Live site:** _[add your GitHub Pages URL here once published]_
+**Live site:** _(https://herachxx.github.io/Aruzhan-Maratova/)_
 
 ---
 
@@ -30,21 +30,21 @@ This is a fully static, no-framework personal portfolio. Every section is writte
 
 | Section | Description |
 |---|---|
-| **Hero** | Name, title, short bio, and key focus areas |
-| **About** | Background, personal info table, cybersecurity setup photos |
-| **Skills** | Five core domains (Cybersecurity, Linux, Competitive Programming, CTF, Leadership) + secondary skill pills |
-| **Projects** | Hardware and software builds with photos and videos: Automated Gate, RFID Reader, Raspberry Pi Lab, Radio Implementation, Circuit Soldering, PC Repair |
-| **Achievements** | Competition results, awards, and certificates: World Space Olympiad (2nd), Programming Olympiads (1st, 3rd), iCode (31st/1000+), UAV Code Challenge, KazRoboDrone, and more |
+| **Hero** | name, title, short bio, and key focus areas |
+| **About** | background, personal info table, cybersecurity setup photos |
+| **Skills** | five core domains (cybersecurity, linux, competitive programming, ctf, leadership) + secondary skill pills |
+| **Projects** | hardware and software builds with photos and videos: automated gate, RFID reader, raspberry pi lab, radio implementation, circuit soldering, PC repair |
+| **Achievements** | competition results, awards, and certificates: World Space Olympiad, competitive programming olympiads, iCode, UAV Code Challenge, KazRoboDrone, and more |
 | **NSRI** | National Student Research Institute — role, global stats, teaching work, research pathways |
-| **Education** | Academic timeline from Grade 1 to present |
-| **Gallery** | Photo and video gallery with lightbox viewer |
-| **Hobbies** | Guitar, FPV Drones, Languages & IELTS prep, Electronics & Lock-picking |
-| **Goals** | Academic targets for 2027: MIT, IELTS 7.5+, SAT 1500+, published research |
+| **Education** | academic timeline from grade 1 to present |
+| **Gallery** | photo and video gallery with lightbox viewer |
+| **Hobbies** | guitar, FPV drones, languages & IELTS prep, electronics & lock-picking |
+| **Goals** | academic targets for 2027: MIT, IELTS 7.5+, SAT 1500+, published research |
 | **Contact** | Email, GitHub, LinkedIn, Instagram, YouTube |
 
 ---
 
-## Project Structure
+## Project structure
 
 ```
 portfolio/
@@ -56,7 +56,7 @@ portfolio/
     ├── nsri-logo.png   # NSRI logo
     ├── favicon.ico     # Browser tab icon
     ├── favicon.png     # Browser tab icon (PNG)
-    └── media/          # 41 photos and videos
+    └── media/          # 41+ photos and videos
         ├── *.jpg
         ├── *.png
         └── *.mp4
@@ -64,7 +64,7 @@ portfolio/
 
 ---
 
-## Setup & Deployment
+## Setup & deployment
 
 ### View locally
 
@@ -97,16 +97,16 @@ git push -u origin main
 
 ---
 
-## Tech Stack
+## Tech stack
 
 | Layer | Choice | Reason |
 |---|---|---|
-| Markup | HTML5 (semantic) | Clean, accessible, no framework overhead |
-| Styles | CSS3 + Custom Properties | Full control, responsive, no Tailwind/Bootstrap |
-| Scripts | Vanilla JavaScript (ES6+) | Zero dependencies, fast load |
-| Icons | Font Awesome 6 | Brand icons (GitHub, LinkedIn, etc.) + UI icons |
-| Fonts | Playfair Display · Outfit · JetBrains Mono | Google Fonts — serif display, clean body, monospace labels |
-| Hosting | GitHub Pages | Free, fast, version-controlled |
+| Markup | HTML5 (semantic) | clean, accessible, no framework overhead |
+| Styles | CSS3 + custom Properties | full control, responsive, no tailwind/bootstrap |
+| Scripts | Vanilla JavaScript (ES6+) | zero dependencies, fast load |
+| Icons | Font awesome 6 | brand icons (GitHub, LinkedIn, etc.) + UI icons |
+| Fonts | Playfair display · Outfit · JetBrains Mono | Google Fonts — serif display, clean body, monospace labels |
+| Hosting | GitHub Pages | free, fast, version-controlled |
 
 **JavaScript features used:**
 - `IntersectionObserver` — scroll-reveal animations + active nav link tracking
@@ -133,7 +133,7 @@ git push -u origin main
 
 - **Email:** aruzhanmaratova2009@gmail.com
 - **GitHub:** [@herachxx](https://github.com/herachxx)
-- **LinkedIn:** [aruzhan-maratova-or-herachxx](https://www.linkedin.com/in/aruzhan-maratova-or-herachxx/)
+- **LinkedIn:** [aruzhan-maratova](https://www.linkedin.com/in/aruzhan-maratova/)
 - **Instagram:** [@herachxx](https://www.instagram.com/herachxx/)
 - **YouTube:** [@herachxx](https://www.youtube.com/@herachxx)
 
@@ -150,3 +150,5 @@ The **media** (photos, videos, certificates) are personal and remain all rights 
 <p align="center">
   Built by Aruzhan Maratova · Aktobe, Kazakhstan · 2026
 </p>
+
+Be free to ask any questions! ❤️
