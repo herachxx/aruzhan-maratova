@@ -1,320 +1,237 @@
 'use strict';
 
-/* helpers */
-const $  = id  => document.getElementById(id);
-const qs = sel => document.querySelector(sel);
-const qa = sel => [...document.querySelectorAll(sel)];
+const $ = id => document.getElementById(id);
+const $$ = sel => [...document.querySelectorAll(sel)];
 
-/* SIDE NAV */
-function initNav() {
-  const trigger = $('nav-trigger');
-  const nav     = $('side-nav');
-  const wrap    = $('site-wrap');
-  if (!trigger || !nav) return;
-
-  const isDesktop = () => window.innerWidth > 900;
-  let isOpen = false;
-
-  function open() {
-    isOpen = true;
-    nav.classList.add('open');
-    trigger.classList.add('open');
-    trigger.setAttribute('aria-expanded', 'true');
-    if (isDesktop() && wrap) wrap.classList.add('open');
-  }
-
-  function close() {
-    isOpen = false;
-    nav.classList.remove('open');
-    trigger.classList.remove('open');
-    trigger.setAttribute('aria-expanded', 'false');
-    if (wrap) wrap.classList.remove('open');
-  }
-
-  // open automatically on desktop
-  if (isDesktop()) open();
-
-  // toggle
-  trigger.addEventListener('click', () => isOpen ? close() : open());
-
-  // close on nav link click (mobile)
-  qa('.side-nav-links a').forEach(a => {
-    a.addEventListener('click', () => {
-      if (!isDesktop()) close();
-    });
-  });
-
-  // escape key
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && isOpen) close();
-  });
-
-  // click outside on mobile
-  document.addEventListener('click', e => {
-    if (!isDesktop() && isOpen &&
-        !nav.contains(e.target) &&
-        !trigger.contains(e.target)) {
-      close();
-    }
-  });
-
-  // resize: sync open state with layout
-  window.addEventListener('resize', () => {
-    if (isOpen) {
-      if (isDesktop()) wrap?.classList.add('open');
-      else             wrap?.classList.remove('open');
-    }
-  }, { passive: true });
-}
-
-/* SCROLL PROGRESS BAR */
+/* progress bar */
 function initProgress() {
-  const bar = $('progress-bar');
+  const bar = $('prog');
   if (!bar) return;
-
-  function update() {
-    const total = document.documentElement.scrollHeight - window.innerHeight;
-    bar.style.width = total > 0 ? `${(window.scrollY / total) * 100}%` : '0%';
-  }
-
+  const update = () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0';
+  };
   window.addEventListener('scroll', update, { passive: true });
   update();
 }
 
-/* ACTIVE NAV LINK */
-function initActiveLink() {
-  const sections = qa('section[id], div[id].stats-bar');
-  const links    = qa('.side-nav-links a[href^="#"]');
-  if (!links.length) return;
+/* side nav */
+function initNav() {
+  const btn   = $('nav-btn');
+  const nav   = $('sidenav');
+  const wrap  = $('wrap');
+  const close = $('sn-close');
+  if (!btn || !nav) return;
 
-  const observer = new IntersectionObserver(entries => {
+  const isWide = () => window.innerWidth >= 900;
+  let open = false;
+
+  function openNav() {
+    open = true;
+    nav.classList.add('is-open');
+    btn.classList.add('is-open');
+    btn.setAttribute('aria-expanded', 'true');
+    if (isWide()) wrap?.classList.add('is-pushed');
+  }
+  function closeNav() {
+    open = false;
+    nav.classList.remove('is-open');
+    btn.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
+    wrap?.classList.remove('is-pushed');
+  }
+
+  // auto-open on desktop
+  if (isWide()) openNav();
+
+  btn.addEventListener('click', () => open ? closeNav() : openNav());
+  close?.addEventListener('click', closeNav);
+
+  // close on link click (mobile)
+  $$('.sn-nav a').forEach(a => a.addEventListener('click', () => {
+    if (!isWide()) closeNav();
+  }));
+
+  // escape / outside click
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && open) closeNav(); });
+  document.addEventListener('click', e => {
+    if (!isWide() && open && !nav.contains(e.target) && !btn.contains(e.target)) closeNav();
+  });
+
+  window.addEventListener('resize', () => {
+    if (open && isWide()) wrap?.classList.add('is-pushed');
+    else if (!isWide()) wrap?.classList.remove('is-pushed');
+  }, { passive: true });
+}
+
+/* active nav link highlight */
+function initActiveLink() {
+  const links = $$('.sn-nav a[href^="#"]');
+  if (!links.length) return;
+  const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         links.forEach(l => l.classList.remove('active'));
-        const active = links.find(l => l.getAttribute('href') === `#${e.target.id}`);
-        if (active) active.classList.add('active');
+        const match = links.find(l => l.getAttribute('href') === '#' + e.target.id);
+        if (match) match.classList.add('active');
       }
     });
-  }, { threshold: 0.35 });
-
-  qa('section[id]').forEach(s => observer.observe(s));
+  }, { threshold: 0.3 });
+  $$('section[id]').forEach(s => obs.observe(s));
 }
 
-/* SCROLL REVEAL */
+/* scroll reveal */
 function initReveal() {
-  const els = qa('.reveal');
-  if (!els.length) return;
-
-  const observer = new IntersectionObserver(entries => {
+  const items = $$('.reveal');
+  if (!items.length) return;
+  const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
+      if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
     });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-  els.forEach(el => observer.observe(el));
+  }, { threshold: 0.06, rootMargin: '0px 0px -32px 0px' });
+  items.forEach(el => obs.observe(el));
 }
 
-/* STAGGER DELAYS */
+/* stagger delays */
 function initStagger() {
-  const groups = [
-    '.top-skills .skill-card',
+  [
+    '.skill-cards .skill-card',
     '.ach-grid .ach-card',
-    '.cert-row .cert-item',
-    '.action-grid .media-card',
-    '.nsri-stats .nsri-stat',
-    '.goals-grid .goal-card',
-    '.contacts-grid .contact-card',
-    '.hobbies-grid .hobby-card',
-    '.gallery-col .gallery-item',
-  ];
-
-  groups.forEach(sel => {
-    qa(sel).forEach((el, i) => {
-      el.style.transitionDelay = `${i * 0.07}s`;
-    });
+    '.cert-strip .cert-card',
+    '.nsri-stats .ns',
+    '.goals .goal',
+    '.contacts .ccard',
+    '.hobbies .hobby',
+    '.masonry .gitem',
+  ].forEach(sel => {
+    $$(sel).forEach((el, i) => { el.style.transitionDelay = (i * 0.06) + 's'; });
   });
 }
 
-/* SMOOTH SCROLL */
+/* smooth scroll */
 function initSmoothScroll() {
-  qa('a[href^="#"]').forEach(a => {
+  $$('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const id = a.getAttribute('href').slice(1);
       if (!id) return;
       const target = document.getElementById(id);
       if (!target) return;
       e.preventDefault();
-      const y = target.getBoundingClientRect().top + window.scrollY - 24;
-      window.scrollTo({ top: y, behavior: 'smooth' });
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 18, behavior: 'smooth' });
     });
   });
 }
 
-/* ANIMATED COUNTERS */
-function parseNum(str) {
-  const s = str.replace(/[$,+K]/g, '').trim();
-  return parseFloat(s) || null;
-}
-
-function formatNum(original, val) {
-  const r = Math.round(val);
-  let out = '';
-  if (original.includes('$')) out += '$';
-  if (original.includes('K') && val >= 1000) return out + (val / 1000).toFixed(0) + 'K';
-  if (original.includes(',')) return out + r.toLocaleString();
-  out += r.toString();
-  if (original.includes('+')) out += '+';
-  return out;
-}
-
-function animateCounter(el) {
-  const original = el.textContent.trim();
-  const target   = parseNum(original);
-  if (!target) return;
-
+/* counter animation */
+function countUp(el) {
+  const raw = el.textContent.trim();
+  const val = parseFloat(raw.replace(/[^0-9.]/g, ''));
+  if (isNaN(val)) return;
+  const dur = 1100;
   const start = performance.now();
-  const dur   = 1300;
-
-  (function step(now) {
-    const t = Math.min((now - start) / dur, 1);
-    const e = 1 - Math.pow(1 - t, 3); // ease-out cubic
-    el.textContent = formatNum(original, e * target);
-    if (t < 1) requestAnimationFrame(step);
-    else el.textContent = original;
-  })(start);
+  const step = now => {
+    const p = Math.min((now - start) / dur, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    const cur = Math.round(ease * val);
+    // reconstruct original format
+    let out = '';
+    if (raw.startsWith('$')) out += '$';
+    if (raw.includes(',')) out += cur.toLocaleString();
+    else out += cur;
+    if (raw.includes('+')) out += '+';
+    if (raw.includes('K')) out += 'K';
+    el.textContent = out;
+    if (p < 1) requestAnimationFrame(step);
+    else el.textContent = raw; // restore exact original
+  };
+  requestAnimationFrame(step);
 }
 
 function initCounters() {
-  const els = qa('.stat-n, .nsri-n');
+  const els = $$('.stat-n, .ns-n');
   if (!els.length) return;
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        animateCounter(e.target);
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.7 });
-
-  els.forEach(el => observer.observe(el));
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { countUp(e.target); obs.unobserve(e.target); } });
+  }, { threshold: 0.6 });
+  els.forEach(el => obs.observe(el));
 }
 
-/* HERO PHOTO PARALLAX (desktop only) */
+/* portrait parallax (desktop only) */
 function initParallax() {
-  const wrap = $('photo-wrap');
-  if (!wrap || window.innerWidth <= 900) return;
-
+  const el = $('portrait');
+  if (!el || window.innerWidth < 900) return;
   let raf = false;
-
   document.addEventListener('mousemove', e => {
     if (raf) return;
     raf = true;
     requestAnimationFrame(() => {
       const rx = (e.clientX / window.innerWidth  - 0.5) * 2;
       const ry = (e.clientY / window.innerHeight - 0.5) * 2;
-      wrap.style.transform = `perspective(900px) rotateY(${rx * 2.8}deg) rotateX(${-ry * 2}deg)`;
+      el.style.transform = `perspective(800px) rotateY(${rx * 2.8}deg) rotateX(${-ry * 1.9}deg)`;
       raf = false;
     });
   });
-
   document.addEventListener('mouseleave', () => {
-    wrap.style.transition = 'transform 0.55s ease';
-    wrap.style.transform  = '';
-    setTimeout(() => { wrap.style.transition = ''; }, 580);
+    el.style.transition = 'transform .5s ease';
+    el.style.transform = '';
+    setTimeout(() => { el.style.transition = ''; }, 520);
   });
 }
 
-/* GALLERY LIGHTBOX */
+/* gallery lightbox */
 function initLightbox() {
-  // create lightbox DOM
-  const lb = document.createElement('div');
-  lb.className = 'lightbox';
-  lb.setAttribute('role', 'dialog');
-  lb.setAttribute('aria-modal', 'true');
-  lb.setAttribute('aria-label', 'Image viewer');
-  lb.innerHTML = `
-    <div class="lightbox-inner">
-      <button class="lightbox-close" aria-label="Close">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-      <div class="lightbox-media"></div>
-    </div>`;
-  document.body.appendChild(lb);
+  const lb    = $('lb');
+  const panel = $('lb-content');
+  const close = $('lb-close');
+  if (!lb) return;
 
-  const lbMedia = lb.querySelector('.lightbox-media');
-  const lbClose = lb.querySelector('.lightbox-close');
-
-  function openLb(src, isVideo) {
-    lbMedia.innerHTML = '';
-    if (isVideo) {
-      const v = document.createElement('video');
-      v.src = src;
-      v.controls = true;
-      v.autoplay = true;
-      lbMedia.appendChild(v);
-    } else {
-      const img = document.createElement('img');
-      img.src = src;
-      img.alt = '';
-      lbMedia.appendChild(img);
-    }
+  function open(src, isVideo) {
+    panel.innerHTML = '';
+    const el = document.createElement(isVideo ? 'video' : 'img');
+    el.src = src;
+    if (isVideo) { el.controls = true; el.autoplay = true; }
+    el.alt = '';
+    panel.appendChild(el);
     lb.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
-
-  function closeLb() {
+  function shut() {
     lb.classList.remove('open');
     document.body.style.overflow = '';
-    const v = lbMedia.querySelector('video');
+    const v = panel.querySelector('video');
     if (v) v.pause();
-    setTimeout(() => { lbMedia.innerHTML = ''; }, 320);
+    setTimeout(() => { panel.innerHTML = ''; }, 280);
   }
 
-  // bind gallery items
-  qa('.gallery-item').forEach(item => {
-    item.style.cursor = 'pointer';
+  $$('.gitem').forEach(item => {
     item.addEventListener('click', () => {
-      const img   = item.querySelector('img');
-      const video = item.querySelector('video source');
-      if (video) openLb(video.src, true);
-      else if (img) openLb(img.src, false);
+      const vs = item.querySelector('video source');
+      const img = item.querySelector('img');
+      if (vs) open(vs.src, true);
+      else if (img) open(img.src, false);
     });
+    item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') item.click(); });
   });
 
-  // close triggers
-  lbClose.addEventListener('click', closeLb);
-  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && lb.classList.contains('open')) closeLb();
-  });
+  close?.addEventListener('click', shut);
+  lb.addEventListener('click', e => { if (e.target === lb) shut(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('open')) shut(); });
 }
 
-/* VIDEO LAZY LOAD
-   don't load video metadata until near viewport */
+/* lazy-load videos */
 function initVideoLazy() {
-  const videos = qa('video[preload="none"]');
-  if (!videos.length) return;
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.load();
-        observer.unobserve(e.target);
-      }
-    });
-  }, { rootMargin: '200px' });
-
-  videos.forEach(v => observer.observe(v));
+  const vids = $$('video[preload="none"]');
+  if (!vids.length) return;
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.load(); obs.unobserve(e.target); } });
+  }, { rootMargin: '250px' });
+  vids.forEach(v => obs.observe(v));
 }
 
-/* INIT */
+/* boot */
 document.addEventListener('DOMContentLoaded', () => {
-  initNav();
   initProgress();
+  initNav();
   initActiveLink();
   initReveal();
   initStagger();
