@@ -15,7 +15,7 @@ function initProgress() {
   update();
 }
 
-/* SIDE NAV  (hamburger is the only toggle — no sn-close button) */
+/* SIDE NAV */
 function initNav() {
   const btn     = $('nav-btn');
   const nav     = $('sidenav');
@@ -103,15 +103,9 @@ function initReveal() {
 /* STAGGER DELAYS */
 function initStagger() {
   [
-    '.skill-cards .skill-card',
-    '.ach-grid .ach-card',
-    '.cert-strip .cert-card',
-    '.nsri-stats .ns',
-    '.goals .goal',
-    '.contacts .ccard',
-    '.hobbies .hobby',
-    '.masonry .gitem',
-    '.tag-cloud .tag',
+    '.skill-cards .skill-card', '.ach-grid .ach-card', '.cert-strip .cert-card',
+    '.nsri-stats .ns', '.goals .goal', '.contacts .ccard',
+    '.hobbies .hobby', '.masonry .gitem', '.tag-cloud .tag',
   ].forEach(sel => {
     $$(sel).forEach((el, i) => { el.style.transitionDelay = (i * 0.055) + 's'; });
   });
@@ -139,8 +133,7 @@ function countUp(el) {
   const raw = el.textContent.trim();
   const val = parseFloat(raw.replace(/[^0-9.]/g, ''));
   if (isNaN(val)) return;
-  const dur = 1200;
-  const start = performance.now();
+  const dur = 1200, start = performance.now();
   const step = now => {
     const p    = Math.min((now - start) / dur, 1);
     const ease = 1 - Math.pow(1 - p, 3);
@@ -156,7 +149,6 @@ function countUp(el) {
   };
   requestAnimationFrame(step);
 }
-
 function initCounters() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const els = $$('.stat-n, .ns-n');
@@ -174,8 +166,7 @@ function initParallax() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   let raf = false;
   document.addEventListener('mousemove', e => {
-    if (raf) return;
-    raf = true;
+    if (raf) return; raf = true;
     requestAnimationFrame(() => {
       const rx = (e.clientX / window.innerWidth  - 0.5) * 2;
       const ry = (e.clientY / window.innerHeight - 0.5) * 2;
@@ -190,11 +181,9 @@ function initParallax() {
   });
 }
 
-/* VIDEO OVERLAYS  — play/pause button on every <video controls>
-   shows pause icon when paused/ended; hides when playing. */
+/* VIDEO OVERLAYS */
 function initVideoOverlays() {
-  $$('video[controls]').forEach(vid => {
-    // wrap video in .vid-wrap if not already wrapped
+  $$('video').forEach(vid => {
     const parent = vid.parentElement;
     let wrap;
     if (parent.classList.contains('vid-wrap')) {
@@ -202,61 +191,106 @@ function initVideoOverlays() {
     } else {
       wrap = document.createElement('div');
       wrap.className = 'vid-wrap';
-      // copy border-radius from a proj-media video context if needed
       parent.insertBefore(wrap, vid);
       wrap.appendChild(vid);
     }
 
-    // create overlay button
     const btn = document.createElement('button');
-    btn.className  = 'vid-btn';
-    btn.type       = 'button';
+    btn.className = 'vid-btn';
+    btn.type = 'button';
+    btn.innerHTML = '<span class="vid-btn-icon"><i class="fa-solid fa-play"></i></span>';
     btn.setAttribute('aria-label', 'Play video');
-    btn.innerHTML  = '<span class="vid-btn-icon"><i class="fa-solid fa-pause"></i></span>';
     wrap.appendChild(btn);
 
     const icon = btn.querySelector('i');
 
-    function showPause() {
-      icon.className = 'fa-solid fa-pause';
-      btn.setAttribute('aria-label', 'Playing — click to pause');
-      btn.classList.remove('hidden');
-    }
-    function showPlay() {
+    const showPlay = () => {
       icon.className = 'fa-solid fa-play';
       btn.setAttribute('aria-label', 'Play video');
       btn.classList.remove('hidden');
-    }
-    function hideBtn() {
-      btn.classList.add('hidden');
-    }
+    };
+    const showPause = () => {
+      icon.className = 'fa-solid fa-pause';
+      btn.setAttribute('aria-label', 'Pause video');
+      btn.classList.remove('hidden');
+    };
+    const hideOverlay = () => btn.classList.add('hidden');
 
-    // initial state: video is paused → show pause icon
-    showPause();
+    // start with PLAY icon
+    showPlay();
 
     btn.addEventListener('click', e => {
       e.stopPropagation();
-      if (vid.paused || vid.ended) {
-        vid.play().catch(() => {});
-      } else {
-        vid.pause();
-      }
+      if (vid.paused || vid.ended) vid.play().catch(() => {});
+      else vid.pause();
     });
 
-    // when video starts playing → hide the overlay
-    vid.addEventListener('play', hideBtn);
-
-    // when video is paused manually → show play icon
-    vid.addEventListener('pause', () => {
-      if (!vid.ended) showPlay();
-    });
-
-    // when video ends → show pause icon again (reset state indicator)
-    vid.addEventListener('ended', showPause);
+    vid.addEventListener('play',   hideOverlay);
+    vid.addEventListener('pause',  () => { if (!vid.ended) showPause(); });
+    vid.addEventListener('ended',  showPlay);
   });
 }
 
-/* GALLERY LIGHTBOX  (gallery .gitem click → lightbox) */
+/* IN-PAGE VIEWER  (double-click any image or video → small modal) */
+function initViewer() {
+  const viewer   = $('viewer');
+  const backdrop = $('viewer-backdrop');
+  const closeBtn = $('viewer-close');
+  const content  = $('viewer-content');
+  if (!viewer) return;
+
+  let activeVideo = null;
+
+  function openViewer(src, isVideo) {
+    content.innerHTML = '';
+    if (isVideo) {
+      const v = document.createElement('video');
+      v.src = src; v.controls = true; v.autoplay = true;
+      content.appendChild(v);
+      activeVideo = v;
+    } else {
+      const img = document.createElement('img');
+      img.src = src; img.alt = '';
+      content.appendChild(img);
+      activeVideo = null;
+    }
+    viewer.hidden = false;
+    document.body.style.overflow = 'hidden';
+    closeBtn?.focus();
+  }
+
+  function closeViewer() {
+    if (activeVideo) { activeVideo.pause(); activeVideo = null; }
+    viewer.hidden = true;
+    document.body.style.overflow = '';
+    content.innerHTML = '';
+  }
+
+  // double-click: images and video overlays
+  document.addEventListener('dblclick', e => {
+    // image double-click
+    const img = e.target.closest('img');
+    if (img && !img.closest('#viewer') && !img.closest('.portrait-badge')) {
+      openViewer(img.src, false);
+      return;
+    }
+    // video area double-click (but not the vid-btn itself)
+    const vw = e.target.closest('.vid-wrap');
+    if (vw && !e.target.closest('.vid-btn') && !vw.closest('#viewer')) {
+      const vid = vw.querySelector('video');
+      const src = vid?.querySelector('source')?.src || vid?.currentSrc || vid?.src;
+      if (src) openViewer(src, true);
+    }
+  });
+
+  closeBtn?.addEventListener('click', closeViewer);
+  backdrop?.addEventListener('click', closeViewer);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !viewer.hidden) closeViewer();
+  });
+}
+
+/* GALLERY LIGHTBOX  (single-click .gitem → full-screen lightbox) */
 function initLightbox() {
   const lb    = $('lb');
   const panel = $('lb-content');
@@ -274,7 +308,6 @@ function initLightbox() {
     document.body.style.overflow = 'hidden';
     close?.focus();
   }
-
   function closeLb() {
     lb.classList.remove('open');
     document.body.style.overflow = '';
@@ -284,10 +317,12 @@ function initLightbox() {
   }
 
   $$('.gitem').forEach(item => {
-    item.addEventListener('click', () => {
-      const vs  = item.querySelector('video source');
+    item.addEventListener('click', e => {
+      if (e.target.closest('.vid-btn')) return;
+      const vid = item.querySelector('video');
       const img = item.querySelector('img');
-      if (vs)  openLb(vs.src, true);
+      const src = vid?.querySelector('source')?.src || vid?.currentSrc || vid?.src;
+      if (src) openLb(src, true);
       else if (img) openLb(img.src, false);
     });
     item.addEventListener('keydown', e => {
@@ -299,19 +334,6 @@ function initLightbox() {
   lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && lb.classList.contains('open')) closeLb();
-  });
-}
-
-/* DOUBLE-CLICK IMAGE → open full size in new tab
-   applies to all images except those inside the lightbox itself */
-function initImageDblClick() {
-  $$('img').forEach(img => {
-    // skip lightbox content
-    if (img.closest('#lb-content') || img.closest('.portrait-badge')) return;
-    img.addEventListener('dblclick', () => {
-      const src = img.src;
-      if (src) window.open(src, '_blank', 'noopener');
-    });
   });
 }
 
@@ -362,9 +384,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initCounters();
   initParallax();
-  initVideoOverlays();   // must run before lightbox so vids are wrapped
-  initLightbox();
-  initImageDblClick();
+  initVideoOverlays();  // wraps videos first
+  initViewer();         // double-click modal
+  initLightbox();       // gallery single-click lightbox
   initVideoLazy();
   initLangBars();
   initKeyboardNav();
