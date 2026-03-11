@@ -5,7 +5,7 @@
 
 A personal portfolio website built to support university applications, scholarship submissions, and professional outreach. Showcases projects, competition achievements, skills, research work, and personal interests.
 
-**Live site:** _https://herachxx.github.io/aruzhan-maratova/_
+**Live site:** _https://herachxx.github.io/Aruzhan-Maratova/_
 
 ---
 
